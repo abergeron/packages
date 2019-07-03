@@ -1,0 +1,42 @@
+{% set git_hash = "b3f3ab5593c1949947c9872c8df1479975116a95" %}
+# Bump this up by one when you change the hash above and
+# reset to 0 when updating the version.
+{% set revision = "0" %}
+{% set release = False %}
+{% set version = "0.6dev" %}
+
+{% if not release %}
+  {% set version = version + "+" + revision + "." + git_hash[:8] %}
+{% endif %}
+
+package:
+  name: tvm-libs
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/dmlc/tvm.git
+  git_rev: {{ git_hash }}
+
+build:
+  number: 0
+  string: cuda{{ cuda_version | replace('.', '') }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda]
+
+requirements:
+  build:
+    # The anaconda compilers for OS X are old an annoying
+    # so we rely on the platform ones for now
+    - {{ compiler('cxx') }}  # [linux]
+    - cmake
+    - make
+    - git
+  host:
+    - llvmdev ==8.0.0
+    - zlib  # [linux]
+  run:
+    - {{ pin_compatible('cudatoolkit', lower_bound=cuda_version, max_pin='x.x') }}  # [cuda]
+    - {{ pin_compatible('cudnn', lower_bound='7.6.0', max_pin='x') }}  # [cuda]
+
+about:
+  home: https://github.com/dmlc/tvm
+  license: Apache2
+  summary: a low level domain specific language for compiling tensor computation pipelines

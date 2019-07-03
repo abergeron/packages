@@ -1,0 +1,31 @@
+diff --git a/python/tvm/autotvm/measure/measure_methods.py b/python/tvm/autotvm/measure/measure_methods.py
+index 31d68848..c742195b 100644
+--- a/python/tvm/autotvm/measure/measure_methods.py
++++ b/python/tvm/autotvm/measure/measure_methods.py
+@@ -33,9 +33,9 @@ import tempfile
+ 
+ import numpy as np
+ 
+-from ... import ir_pass, build, build_config, nd, TVMError, register_func, \
+-    rpc as _rpc, target as _target
+-from ...contrib import nvcc, ndk, tar
++from ... import ir_pass, build, build_config, nd, TVMError, rpc as _rpc, \
++    target as _target
++from ...contrib import ndk, tar
+ 
+ from ..util import get_const_tuple
+ from ..env import AutotvmGlobalScope
+@@ -568,13 +568,6 @@ def check_remote(target, device_key, host=None, port=None, priority=100, timeout
+     return not t.is_alive()
+ 
+ 
+-@register_func
+-def tvm_callback_cuda_compile(code):
+-    """use nvcc to generate ptx code for better optimization"""
+-    ptx = nvcc.compile_cuda(code, target="ptx", arch=AutotvmGlobalScope.current.cuda_target_arch)
+-    return ptx
+-
+-
+ def set_cuda_target_arch(arch):
+     """set target architecture of nvcc compiler
+ 

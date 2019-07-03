@@ -1,0 +1,59 @@
+{% set git_hash = "b3f3ab5593c1949947c9872c8df1479975116a95" %}
+# Bump this up by one when you change the hash above and
+# reset to 0 when updating the version.
+{% set revision = "0" %}
+{% set release = False %}
+{% set version = "0.6dev" %}
+
+
+{% if not release %}
+  {% set version = version + "+" + revision + "." + git_hash[:8] %}
+{% endif %}
+
+package:
+  name: tvm
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/dmlc/tvm.git
+  git_rev: {{ git_hash }}
+  patches:
+    - no_nvcc.patch
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - git
+  host:
+    - python {{ python }}
+    - cython
+    - numpy
+    - setuptools
+    - decorator
+    - tvm-libs =={{ version }}
+  run:
+    - python
+    - {{ pin_compatible('numpy') }}
+    - decorator
+    - tvm-libs =={{ version }}
+
+test:
+  imports:
+    - tvm
+    - topi
+    - nnvm
+  requires:
+    - nose
+    - scipy
+  source_files:
+    - tests/python
+  commands:
+    - python -m nose -v tests/python/integration
+
+about:
+  home: https://github.com/dmlc/tvm
+  license: Apache2
+  summary: a low level domain specific language for compiling tensor computation pipelines
