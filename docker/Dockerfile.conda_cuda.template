@@ -1,4 +1,4 @@
-FROM nvidia/cuda:{{ cuda_version }}-devel-centos6
+FROM nvidia/cuda:{{ cuda_version }}-devel-centos7
 
 RUN yum install -y bzip2 curl sudo binutils && \
     yum clean all && \
