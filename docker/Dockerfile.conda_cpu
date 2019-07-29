@@ -6,5 +6,3 @@ RUN apt-get update && apt-get install -y sudo binutils && \
 RUN /opt/conda/bin/conda upgrade --all && \
     /opt/conda/bin/conda install conda-build conda-verify && \
     /opt/conda/bin/conda clean -ya
-
-ENV CONDA_BLD_PATH /tmp

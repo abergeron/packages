@@ -23,7 +23,6 @@ RUN /opt/conda/bin/conda install --download-only -c numba llvmdev=8.0.0
 
 ENV PATH /opt/conda/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
-ENV CONDA_BLD_PATH /tmp
 
 WORKDIR /workspace
 RUN chmod -R a+w /workspace
