@@ -1,7 +1,7 @@
-{% set git_hash = "b3f3ab5593c1949947c9872c8df1479975116a95" %}
+{% set git_hash = "6970fc30ecc3be129add28081569c2f3a7883ebc" %}
 # Bump this up by one when you change the hash above and
 # reset to 0 when updating the version.
-{% set revision = "0" %}
+{% set revision = "1" %}
 {% set release = False %}
 {% set version = "0.6dev" %}
 
@@ -18,7 +18,7 @@ source:
   git_rev: {{ git_hash }}
 
 build:
-  number: 1
+  number: 0
   string: cuda{{ cuda_version | replace('.', '') }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda]
 
 requirements:
