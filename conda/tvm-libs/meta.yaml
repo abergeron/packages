@@ -1,7 +1,7 @@
-{% set git_hash = "6970fc30ecc3be129add28081569c2f3a7883ebc" %}
+{% set git_hash = "b3f3ab5593c1949947c9872c8df1479975116a95" %}
 # Bump this up by one when you change the hash above and
 # reset to 0 when updating the version.
-{% set revision = "1" %}
+{% set revision = "2" %}
 {% set release = False %}
 {% set version = "0.6dev" %}
 
@@ -16,6 +16,8 @@ package:
 source:
   git_url: https://github.com/dmlc/tvm.git
   git_rev: {{ git_hash }}
+  patches:
+    - pthread.patch
 
 build:
   number: 0
