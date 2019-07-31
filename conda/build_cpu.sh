@@ -11,5 +11,6 @@ touch $HOME/.conda/pkgs/urls.txt
 
 conda info
 
-conda build --output-folder=conda/pkg --skip-existing -c numba conda/tvm-libs
+conda build --output-folder=conda/pkg --skip-existing conda/llvmlib
+conda build --output-folder=conda/pkg --skip-existing conda/tvm-libs
 conda build --output-folder=conda/pkg --skip-existing conda/tvm

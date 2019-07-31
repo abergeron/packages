@@ -32,7 +32,7 @@ requirements:
     - make
     - git
   host:
-    - llvmdev ==8.0.0
+    - llvmlib ==8.0.1
     - zlib  # [linux]
   run:
     - {{ pin_compatible('cudatoolkit', lower_bound=cuda_version, max_pin='x.x') }}  # [cuda]

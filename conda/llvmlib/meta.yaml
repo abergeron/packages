@@ -1,0 +1,33 @@
+{% set version = "8.0.1" %}
+
+package:
+  name: llvmlib
+  version: {{ version }}
+
+source:
+  - url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/llvm-{{ version }}.src.tar.xz
+    sha256: 44787a6d02f7140f145e2250d56c9f849334e11f9ae379827510ed72f12b75e7
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - cmake
+    - make 
+    - python >=3
+  host:
+    - zlib
+
+tests:
+  commands:
+    - $PREFIX/bin/llvm-config --libs
+    - $PREFIX/bin/llc -version
+
+about:
+  home: http://llvm.org/
+  dev_url: https://github.com/llvm/llvm-project
+  license: NCSA
+  license_file: LICENSE.TXT
+  summary: Development headers and libraries for LLVM
