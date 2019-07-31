@@ -2,6 +2,7 @@
 
 set -e
 set -u
+set -x
 
 cd `dirname $0`
 
@@ -26,4 +27,4 @@ docker run -it --rm \
        ${IMAGE_TAG} \
        bash --login scripts/run_as_user.sh "$@"
 
-rm -r ${USER_HOME}
+rm -rf ${USER_HOME}

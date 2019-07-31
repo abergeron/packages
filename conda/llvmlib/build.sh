@@ -8,7 +8,7 @@ if [ "$target_platform" == "osx-64" ]; then
     TOOLCHAIN_OPT=""
 else
     if [ "$target_platform" == "linux-64" ]; then
-        TOOLCHAIN_OPT="-DCMAKE_TOOLCHAIN_FILE=${RECIPE_DIR}/../cross-linux.cmake -DCMAKE_CXX_FLAGS='-pthread' -DCMAKE_C_FLAGS='-pthread'"
+        TOOLCHAIN_OPT="-DCMAKE_TOOLCHAIN_FILE=${RECIPE_DIR}/../cross-linux.cmake"
     else
         TOOLCHAIN_OPT=""
     fi
