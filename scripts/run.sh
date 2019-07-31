@@ -14,7 +14,7 @@ TMPDIR=${TMPDIR:-/tmp}
 
 USER_HOME=`mktemp -d "$TMPDIR/user.XXXXXXXXXXXX"`
 
-docker run --rm \
+docker run -it --rm \
        -v `realpath ..`:/workspace \
        -v $USER_HOME:/home/user \
        -w /workspace \

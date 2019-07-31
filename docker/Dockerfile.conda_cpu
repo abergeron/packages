@@ -1,8 +1,8 @@
 FROM continuumio/miniconda3
 
-RUN apt-get update && apt-get install -y sudo binutils && \
+RUN apt-get update && apt-get install -y sudo binutils patch && \
     rm -rf /var/lib/apt/lists/*
 
 RUN /opt/conda/bin/conda upgrade --all && \
-    /opt/conda/bin/conda install conda-build conda-verify && \
+    /opt/conda/bin/conda install conda-build conda-verify git ripgrep && \
     /opt/conda/bin/conda clean -ya

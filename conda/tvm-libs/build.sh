@@ -11,7 +11,7 @@ else
     METAL_OPT=""
     if [ "$target_platform" == "linux-64" ]; then
 	# Linux 64 bits
-	TOOLCHAIN_OPT="-DCMAKE_TOOLCHAIN_FILE=${RECIPE_DIR}/../cross-linux.cmake"
+	TOOLCHAIN_OPT="-DCMAKE_TOOLCHAIN_FILE=${RECIPE_DIR}/../cross-linux.cmake -DCMAKE_CXX_FLAGS='-pthread' -DCMAKE_C_FLAGS='-pthread'"
     else
 	# Windows (or 32 bits, which we don't support)
 	TOOLCHAIN_OPT=""
@@ -23,7 +23,7 @@ cuda=${cuda:-False}
 
 if [ "$cuda" == "True" ]; then
     CUDA_OPT="-DUSE_CUDA=ON -DUSE_CUBLAS=ON -DUSE_CUDNN=ON"
-    TOOLCHAIN_OPT=""
+    TOOLCHAIN_OPT="-DCMAKE_CXX_FLAGS='-pthread' -DCMAKE_C_FLAGS='-pthread'"
 else
     CUDA_OPT=""
 fi
