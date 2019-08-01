@@ -1,7 +1,6 @@
 #!/bin/bash
 
-set -e
-set -u
+set -eux
 
 if [ "$target_platform" == "osx-64" ]; then
     # macOS 64 bits
@@ -11,7 +10,7 @@ else
     METAL_OPT=""
     if [ "$target_platform" == "linux-64" ]; then
 	# Linux 64 bits
-	TOOLCHAIN_OPT="-DCMAKE_TOOLCHAIN_FILE=${RECIPE_DIR}/../cross-linux.cmake -DCMAKE_SHARED_LINKER_FLAGS='-Wl,-Bsymbolic'"
+	TOOLCHAIN_OPT="-DCMAKE_TOOLCHAIN_FILE=${RECIPE_DIR}/../cross-linux.cmake"
     else
 	# Windows (or 32 bits, which we don't support)
 	TOOLCHAIN_OPT=""
@@ -23,7 +22,7 @@ cuda=${cuda:-False}
 
 if [ "$cuda" == "True" ]; then
     CUDA_OPT="-DUSE_CUDA=ON -DUSE_CUBLAS=ON -DUSE_CUDNN=ON"
-    TOOLCHAIN_OPT="-DCMAKE_SHARED_LINKER_FLAGS='-Wl,-Bsymbolic'"
+    TOOLCHAIN_OPT=""
 else
     CUDA_OPT=""
 fi
