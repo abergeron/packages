@@ -45,10 +45,14 @@ requirements:
 test:
  requires:
     - {{ compiler('cxx') }}
+    - hypothesis
+    - pyyaml
  imports:
     - torch
  source_files:
    - test
+   - docs
+   - aten
  commands:
    - OMP_NUM_THREADS=4 python ./test/run_test.py
 
