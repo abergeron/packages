@@ -1,16 +1,18 @@
 #!/bin/bash
 
-set -e
-set -u
+set -eux
 
-conda config --add pkgs_dirs $HOME/.conda/pkgs
-conda config --append pkgs_dirs /opt/conda/pkgs
-# Conda is retarded and freaks out if the following paths/file are not present
-mkdir -p $HOME/.conda/pkgs
-touch $HOME/.conda/pkgs/urls.txt
+if [[ -v BUILD_HOME ]]; then
+    conda config --add pkgs_dirs $HOME/.conda/pkgs
+    conda config --append pkgs_dirs /opt/conda/pkgs
+    # Conda is retarded and freaks out if the following paths/file are not present
+    mkdir -p $HOME/.conda/pkgs
+    touch $HOME/.conda/pkgs/urls.txt
+fi
 
 conda info
 
-conda build --output-folder=conda/pkg --skip-existing conda/llvmlib
-conda build --output-folder=conda/pkg --skip-existing conda/tvm-libs
-conda build --output-folder=conda/pkg --skip-existing conda/tvm
+conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/pytorch
+conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/llvmlib
+conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/tvm-libs
+conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/tvm

@@ -11,4 +11,4 @@ touch $HOME/.conda/pkgs/urls.txt
 
 conda info
 
-conda build --output-folder=conda/pkg --variants "{cuda: True, cuda_version: ${CUDA_VERSION%.*}}" --skip-existing -c numba conda/tvm-libs
+conda build --cache-dir=conda/srccache --output-folder=conda/pkg --variants "{cuda: True, cuda_version: ${CUDA_VERSION%.*}}" --skip-existing -c numba conda/tvm-libs
