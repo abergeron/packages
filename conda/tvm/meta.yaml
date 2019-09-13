@@ -1,7 +1,7 @@
-{% set git_hash = "b3f3ab5593c1949947c9872c8df1479975116a95" %}
+{% set git_hash = "195973c0a136c739c15f238fb4db6b433bf505c6" %}
 # Bump this up by one when you change the hash above and
 # reset to 0 when updating the version.
-{% set revision = "2" %}
+{% set revision = "3" %}
 {% set release = False %}
 {% set version = "0.6dev" %}
 
@@ -36,6 +36,7 @@ requirements:
     - tvm-libs =={{ version }}
   run:
     - python
+    - psutil
     - {{ pin_compatible('numpy') }}
     - decorator
     - tvm-libs =={{ version }}
@@ -46,12 +47,12 @@ test:
     - topi
     - nnvm
   requires:
-    - nose
+    - pytest
     - scipy
   source_files:
     - tests/python
   commands:
-    - python -m nose -v tests/python/integration
+    - pytest -v tests/python/integration
 
 about:
   home: https://github.com/dmlc/tvm
