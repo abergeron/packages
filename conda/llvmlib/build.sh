@@ -5,7 +5,7 @@ set -u
 set -x
 
 if [ "$target_platform" == "osx-64" ]; then
-    TOOLCHAIN_OPT=""
+    TOOLCHAIN_OPT="-DCMAKE_OSX_DEPLOYMENT_TARGET=10.11"
 else
     if [ "$target_platform" == "linux-64" ]; then
         TOOLCHAIN_OPT="-DCMAKE_TOOLCHAIN_FILE=${RECIPE_DIR}/../cross-linux.cmake"
