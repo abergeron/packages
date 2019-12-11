@@ -13,4 +13,6 @@ echo "### BUILD CUDA 9.0"
 ../scripts/run.sh conda_cuda90 ./conda/build_cuda.sh
 echo "### BUILD CUDA 10.0"
 ../scripts/run.sh conda_cuda100 ./conda/build_cuda.sh
+echo "### BUILD CUDA 10.1"
+../scripts/run.sh conda_cuda101 ./conda/build_cuda.sh
 

@@ -9,8 +9,8 @@ from jinja2 import Template
 # and from conda.
 
 # These two must be in sync
-CUDNN_FULL_VERSION = '7.6.0.64'
-CUDNN_VERSION = '7.6.0'
+CUDNN_FULL_VERSION = '7.6.4.38'
+CUDNN_VERSION = '7.6.4'
 
 
 condadir = os.path.dirname(sys.argv[0])
