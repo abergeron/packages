@@ -1,12 +1,12 @@
-{% set version = "8.0.1" %}
+{% set version = "9.0.0" %}
 
 package:
   name: llvmlib
   version: {{ version }}
 
 source:
-  - url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/llvm-{{ version }}.src.tar.xz
-    sha256: 44787a6d02f7140f145e2250d56c9f849334e11f9ae379827510ed72f12b75e7
+  - url: http://releases.llvm.org/{{ version }}/llvm-{{ version }}.src.tar.xz
+    sha256: d6a0565cf21f22e9b4353b2eb92622e8365000a9e90a16b09b56f8157eabfe84
 
 build:
   number: 0
