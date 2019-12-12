@@ -1,5 +1,5 @@
 diff --git a/python/tvm/autotvm/measure/measure_methods.py b/python/tvm/autotvm/measure/measure_methods.py
-index 31d68848..c742195b 100644
+index 861719ff..2ddf9669 100644
 --- a/python/tvm/autotvm/measure/measure_methods.py
 +++ b/python/tvm/autotvm/measure/measure_methods.py
 @@ -33,9 +33,9 @@ import tempfile
@@ -15,14 +15,20 @@ index 31d68848..c742195b 100644
  
  from ..util import get_const_tuple
  from ..env import AutotvmGlobalScope
-@@ -568,13 +568,6 @@ def check_remote(target, device_key, host=None, port=None, priority=100, timeout
+@@ -579,19 +579,6 @@ def check_remote(target, device_key, host=None, port=None, priority=100, timeout
      return not t.is_alive()
  
  
 -@register_func
 -def tvm_callback_cuda_compile(code):
 -    """use nvcc to generate ptx code for better optimization"""
--    ptx = nvcc.compile_cuda(code, target="ptx", arch=AutotvmGlobalScope.current.cuda_target_arch)
+-    curr_cuda_target_arch = AutotvmGlobalScope.current.cuda_target_arch
+-    # e.g., target arch could be [
+-    #   "-gencode", "arch=compute_52,code=sm_52",
+-    #   "-gencode", "arch=compute_70,code=sm_70"
+-    # ]
+-    target = "fatbin" if isinstance(curr_cuda_target_arch, list) else "ptx"
+-    ptx = nvcc.compile_cuda(code, target=target, arch=AutotvmGlobalScope.current.cuda_target_arch)
 -    return ptx
 -
 -
