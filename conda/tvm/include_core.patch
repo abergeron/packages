@@ -1,0 +1,13 @@
+diff --git a/python/setup.py b/python/setup.py
+index 4e4f7034f..a135a6c41 100644
+--- a/python/setup.py
++++ b/python/setup.py
+@@ -147,7 +147,7 @@ if include_libs:
+ 
+ def get_package_data_files():
+     # Relay standard libraries
+-    return ['relay/std/prelude.rly']
++    return ['relay/std/prelude.rly', 'relay/std/core.rly']
+ 
+ 
+ setup(name='tvm',
