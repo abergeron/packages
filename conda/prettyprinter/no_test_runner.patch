@@ -1,0 +1,22 @@
+diff --git a/setup.py b/setup.py
+index 938fb35..fa0c589 100644
+--- a/setup.py
++++ b/setup.py
+@@ -16,11 +16,6 @@ requirements = [
+     'Pygments>=2.2.0',
+ ]
+ 
+-setup_requirements = [
+-    'pytest-runner==3.0',
+-    # TODO(tommikaikkonen): put setup requirements (distutils extensions, etc.) here
+-]
+-
+ test_requirements = [
+     'pytest==4.3.0',
+     'hypothesis==3.33.0',
+@@ -60,5 +55,4 @@ setup(
+     ],
+     test_suite='tests',
+     tests_require=test_requirements,
+-    setup_requires=setup_requirements,
+ )

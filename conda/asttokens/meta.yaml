@@ -1,0 +1,31 @@
+{% set name = "asttokens" %}
+{% set version = "2.0.4" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: a42e57e28f2ac1c85ed9b1f84109401427e5c63c04f61d15b8842b027eec5128
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - pip
+    - setuptools_scm
+    - toml
+    - python
+    - six
+  run:
+    - python
+    - six
+
+about:
+  home: The package home page
+  license: Apache 2.0
+  license_family: APACHE
+  summary: "Annotate AST trees with source code positions"

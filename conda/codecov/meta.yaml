@@ -1,0 +1,39 @@
+{% set name = "codecov" %}
+{% set version = "2.0.22" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: aeeefa3a03cac8a78e4f988e935b51a4689bb1f17f20d4e827807ee11135f845
+
+build:
+  number: 0
+  entry_points:
+    - codecov=codecov:main
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - coverage
+    - pip
+    - python
+    - requests >=2.7.9
+  run:
+    - coverage
+    - python
+    - requests >=2.7.9
+
+test:
+  imports:
+    - codecov
+  commands:
+    - codecov --help
+
+about:
+  home: "https://github.com/codecov/codecov-python"
+  license: Apache Software
+  license_family: APACHE
+  summary: "Hosted coverage reports for GitHub, Bitbucket and Gitlab"
