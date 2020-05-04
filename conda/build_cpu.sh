@@ -16,6 +16,7 @@ conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing
 conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/codecov
 conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/colorful
 conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/prettyprinter
+conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/antlr4-python3-runtime
 conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/llvmlib
 conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/tvm-libs
 conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/tvm
