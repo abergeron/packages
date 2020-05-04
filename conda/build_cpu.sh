@@ -12,7 +12,6 @@ fi
 
 conda info
 
-#conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/pytorch
 conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/llvmlib
 conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/tvm-libs
 conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/tvm
