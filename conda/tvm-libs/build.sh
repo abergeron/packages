@@ -23,6 +23,10 @@ cuda=${cuda:-False}
 if [ "$cuda" == "True" ]; then
     CUDA_OPT="-DUSE_CUDA=ON -DUSE_CUBLAS=ON -DUSE_CUDNN=ON"
     TOOLCHAIN_OPT=""
+    if [ -f "/usr/include/cublas_v2.h" ]; then
+        # The default anaconda compilers don't look there
+        CXXFLAGS="$CXXFLAGS -I/usr/include -L/usr/lib64"
+    fi
 else
     CUDA_OPT=""
 fi
