@@ -13,7 +13,7 @@ fi
 conda info
 
 conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/asttokens
-conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/codecov
+#conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/codecov
 conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/colorful
 conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/prettyprinter
 conda build --cache-dir=conda/srccache --output-folder=conda/pkg --skip-existing conda/antlr4-python3-runtime
