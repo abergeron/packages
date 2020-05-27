@@ -1,0 +1,34 @@
+{% set name = "pyglet" %}
+{% set version = "1.4.11" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.zip"
+  sha256: e4cc8dc2f09d8487f7b3e2d93bd1961528afe989d058177b26a46d3508fd2c33
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - python
+    - future
+
+test:
+  imports:
+    - pyglet
+    - pyglet.app
+    - pyglet.canvas
+
+about:
+  home: "http://pyglet.readthedocs.org/en/latest/"
+  license: BSD
+  license_family: BSD
+  summary: "Cross-platform windowing and multimedia library"

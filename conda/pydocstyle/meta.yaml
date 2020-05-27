@@ -1,0 +1,38 @@
+{% set name = "pydocstyle" %}
+{% set version = "5.0.1" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: a0de36e549125d0a16a72a8c8c6c9ba267750656e72e466e994c222f1b6e92cb
+
+build:
+  number: 0
+  entry_points:
+    - pydocstyle = pydocstyle.cli:main
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - pip
+    - python
+    - snowballstemmer
+  run:
+    - python
+    - snowballstemmer
+
+test:
+  imports:
+    - pydocstyle
+  commands:
+    - pydocstyle --help
+
+about:
+  home: "https://github.com/PyCQA/pydocstyle/"
+  license: MIT
+  license_family: MIT
+  summary: "Python docstring style checker"
+
