@@ -14,7 +14,7 @@ package:
   version: {{ version }}
 
 source:
-  git_url: https://github.com/dmlc/tvm.git
+  git_url: https://github.com/apache/incubator-tvm.git
   git_rev: {{ git_hash }}
 
 build:
