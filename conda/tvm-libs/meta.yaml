@@ -1,7 +1,7 @@
-{% set git_hash = "07449f5a579bdde6e98527aa652e6f693ec4c81e" %}
+{% set git_hash = "55aefc22a6a24ad21953b887f171eac75a33b825" %}
 # Bump this up by one when you change the hash above and
 # reset to 0 when updating the version.
-{% set revision = "2" %}
+{% set revision = "3" %}
 {% set release = False %}
 {% set version = "0.7dev1" %}
 
@@ -30,7 +30,7 @@ requirements:
     - make
     - git
   host:
-    - llvmlib ==9.0.1
+    - llvmlib ==10.0.0
     - zlib  # [linux]
   run:
     - {{ pin_compatible('cudatoolkit', lower_bound=cuda_version, max_pin='x.x') }}  # [cuda]
