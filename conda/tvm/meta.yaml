@@ -44,7 +44,6 @@ requirements:
 test:
   imports:
     - tvm
-    - topi
   requires:
     - pytest
     - scipy
