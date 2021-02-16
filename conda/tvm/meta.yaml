@@ -1,7 +1,7 @@
 {% set git_hash = "f11abf26b6dd84a8cc325da96d8528c48659c509" %}
 # Bump this up by one when you change the hash above and
 # reset to 0 when updating the version.
-{% set revision = "5" %}
+{% set revision = "6" %}
 {% set release = False %}
 {% set version = "0.7dev1" %}
 
